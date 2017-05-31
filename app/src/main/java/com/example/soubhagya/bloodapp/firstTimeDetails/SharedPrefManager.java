@@ -1,4 +1,4 @@
-package com.example.soubhagya.bloodapp.FirstTimeDetails;
+package com.example.soubhagya.bloodapp.firstTimeDetails;
 
 import android.content.Context;
 import android.content.SharedPreferences;

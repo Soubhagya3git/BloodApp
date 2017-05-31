@@ -1,4 +1,4 @@
-package com.example.soubhagya.bloodapp.Authentication;
+package com.example.soubhagya.bloodapp.authentication;
 
 import android.content.Intent;
 import android.support.design.widget.Snackbar;
@@ -6,10 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.soubhagya.bloodapp.R;
+import com.example.soubhagya.bloodapp.firstTimeDetails.DetailsSliderActivity;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.ErrorCodes;
 import com.firebase.ui.auth.IdpResponse;
-import com.firebase.ui.auth.ui.ResultCodes;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Arrays;
@@ -27,7 +27,8 @@ public class AuthenticationActivity extends AppCompatActivity {
 
         if (mAuth.getCurrentUser() != null) {
             showSnackbar(R.string.already_logged_in);
-            // start MainActivity
+            //for now
+            startActivity(new Intent(AuthenticationActivity.this, DetailsSliderActivity.class));
         }
         else {
             startActivityForResult(
@@ -51,10 +52,10 @@ public class AuthenticationActivity extends AppCompatActivity {
             IdpResponse response = IdpResponse.fromResultIntent(data);
 
             if (resultCode == RESULT_OK) {
-                // start MainActivity or QAActivity
-                //finish();
-                //return;
                 showSnackbar(R.string.login_success);
+                startActivity(new Intent(AuthenticationActivity.this, DetailsSliderActivity.class));
+                finish();
+                return;
             }
             else {
                 if (response == null) {

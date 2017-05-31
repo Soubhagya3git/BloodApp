@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.soubhagya.bloodapp.Authentication.AuthenticationActivity"
+    tools:context="com.example.soubhagya.bloodapp.authentication.AuthenticationActivity"
     android:id="@+id/activity_authentication_view">
 
 </android.support.constraint.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.example.soubhagya.bloodapp.FirstTimeDetails;
+package com.example.soubhagya.bloodapp.firstTimeDetails;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

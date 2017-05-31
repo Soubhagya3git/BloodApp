@@ -1,4 +1,4 @@
-package com.example.soubhagya.bloodapp.FirstTimeDetails;
+package com.example.soubhagya.bloodapp.firstTimeDetails;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,7 +13,7 @@ import com.example.soubhagya.bloodapp.R;
  * Created by soubhagya on 1/6/17.
  */
 
-public class PersonalDetailFragment extends Fragment {
+public class ContactsDetailFragment extends Fragment {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -23,7 +23,7 @@ public class PersonalDetailFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_user_details_personal, container, false);
+        View view = inflater.inflate(R.layout.fragment_user_details_contacts, container, false);
         return view;
     }
 }
