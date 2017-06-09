@@ -1,5 +1,6 @@
 package com.example.soubhagya.bloodapp.firstTimeDetails;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.design.widget.Snackbar;
@@ -17,7 +18,9 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.soubhagya.bloodapp.MainActivity;
 import com.example.soubhagya.bloodapp.R;
+import com.example.soubhagya.bloodapp.utils.SharedPrefManager;
 
 public class DetailsSliderActivity extends AppCompatActivity {
 
@@ -27,7 +30,6 @@ public class DetailsSliderActivity extends AppCompatActivity {
     private LinearLayout mDotsLayout;
     private TextView[] mDots;
     private Button mButtonNext;
-    private SharedPrefManager mSharedPrefManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +37,9 @@ public class DetailsSliderActivity extends AppCompatActivity {
 
         // Making notification bar transparent
         if (Build.VERSION.SDK_INT >= 21) {
-            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+            getWindow()
+                    .getDecorView()
+                    .setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         }
 
         setContentView(R.layout.activity_details_slider);
@@ -76,11 +80,13 @@ public class DetailsSliderActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int current = mViewPager.getCurrentItem();
-                if (current < TOTAL_ITEMS) {
+                if (current < TOTAL_ITEMS - 1) {
                     mViewPager.setCurrentItem(current + 1);
                 }
                 else {
-                    //Launch MainActivity
+                    //Start MainActivity
+                    startActivity(new Intent(DetailsSliderActivity.this, MainActivity.class));
+                    finish();
                 }
             }
         });
@@ -137,7 +143,4 @@ public class DetailsSliderActivity extends AppCompatActivity {
         }
     }
 
-    public void showSnackbar(int message) {
-        Snackbar.make(findViewById(R.id.activity_authentication_view), message, Snackbar.LENGTH_SHORT).show();
-    }
 }

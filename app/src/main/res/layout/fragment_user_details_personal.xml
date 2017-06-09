@@ -8,28 +8,41 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:id="@+id/linearLayout"
+        android:layout_marginTop="127dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/editText_username"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/slide_2_title"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="63dp"
+            android:ems="10"
+            android:hint="@string/name_input_hint"
+            android:inputType="textPersonName"
             android:textColor="@android:color/white"
-            android:textSize="@dimen/slide_title"
-            android:textStyle="bold" />
+            android:textSize="20sp"
+            android:textAlignment="center"/>
 
-        <TextView
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/editText_date_of_birth"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:paddingLeft="@dimen/desc_padding"
-            android:paddingRight="@dimen/desc_padding"
-            android:text="@string/slide_2_desc"
+            android:layout_alignEnd="@+id/linearLayout"
+            android:layout_alignRight="@+id/linearLayout"
+            android:layout_below="@+id/linearLayout"
+            android:layout_marginTop="80dp"
+            android:ems="10"
+            android:hint="@string/date_input_hint"
+            android:inputType="date"
             android:textAlignment="center"
             android:textColor="@android:color/white"
-            android:textSize="@dimen/slide_desc" />
+            android:textSize="20sp"/>
 
     </LinearLayout>
 
