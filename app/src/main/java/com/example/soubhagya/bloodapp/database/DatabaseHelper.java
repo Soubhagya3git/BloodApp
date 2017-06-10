@@ -1,10 +1,14 @@
 package com.example.soubhagya.bloodapp.database;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import com.example.soubhagya.bloodapp.database.DbSchema.UserProfileTable;
 import com.example.soubhagya.bloodapp.model.UserProfile;
+import com.example.soubhagya.bloodapp.utils.DataStash;
+
+import static com.facebook.FacebookSdk.getApplicationContext;
 
 /**
  * Created by soubhagya on 9/6/17.
@@ -33,6 +37,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        // Drop older table if existed
+        db.execSQL("DROP TABLE IF EXISTS " + UserProfileTable.NAME);
 
+        // Create tables again
+        onCreate(db);
     }
+
 }

@@ -80,13 +80,22 @@ public class DetailsSliderActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int current = mViewPager.getCurrentItem();
-                if (current < TOTAL_ITEMS - 1) {
-                    mViewPager.setCurrentItem(current + 1);
-                }
-                else {
-                    //Start MainActivity
-                    startActivity(new Intent(DetailsSliderActivity.this, MainActivity.class));
-                    finish();
+                switch (current) {
+                    case 0: {
+                        WelcomeFragment.addUserIdToDatabase();
+                        mViewPager.setCurrentItem(current + 1);
+                        break;
+                    }
+                    case 1: {
+                        PersonalDetailFragment.addPersonalToDatabase();
+                        mViewPager.setCurrentItem(current + 1);
+                        break;
+                    }
+                    case 2: {
+                        ContactsDetailFragment.addContactsToDatabase();
+                        startActivity(new Intent(DetailsSliderActivity.this, MainActivity.class));
+                        finish();
+                    }
                 }
             }
         });

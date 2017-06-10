@@ -15,12 +15,12 @@ public class UserProfile {
     public UserProfile(){}
 
     public UserProfile(String userId, String username,
-                       String dateOfBirth, String phone, String email) {
+                       String dateOfBirth, String email, String phone) {
         mUserId = userId;
         mUsername = username;
         mDateOfBirth = dateOfBirth;
-        mPhone = phone;
         mEmail = email;
+        mPhone = phone;
     }
 
     public String getUserId() {

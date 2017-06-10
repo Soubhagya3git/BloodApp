@@ -16,6 +16,7 @@ import android.widget.EditText;
 import com.example.soubhagya.bloodapp.R;
 import com.example.soubhagya.bloodapp.database.DatabaseHelper;
 import com.example.soubhagya.bloodapp.database.DbSchema;
+import com.example.soubhagya.bloodapp.utils.DataStash;
 import com.example.soubhagya.bloodapp.utils.SharedPrefManager;
 import com.example.soubhagya.bloodapp.database.DbSchema.UserProfileTable;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,8 +29,8 @@ public class ContactsDetailFragment extends Fragment {
 
     private EditText mEditTextEmail;
     private EditText mEditTextPhone;
-    private String mEmail;
-    private String mPhone;
+    private static String mEmail;
+    private static String mPhone;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -83,22 +84,26 @@ public class ContactsDetailFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(UserProfileTable.Columns.EMAIL, mEmail);
-        contentValues.put(UserProfileTable.Columns.PHONE, mPhone);
 
-        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-        SQLiteDatabase database = new DatabaseHelper(getActivity().getApplicationContext())
-                .getWritableDatabase();
-        database.update(UserProfileTable.NAME, contentValues,
-                        UserProfileTable.Columns.USER_ID + " = ?",
-                        new String[] {userId});
+        Log.d("CONTACTS_VIEW: ", "is destroyed");
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
         Log.d("CONTACTS_FRAGMENT: ", "is destroyed");
+    }
+
+    public static void addContactsToDatabase() {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(UserProfileTable.Columns.EMAIL, mEmail);
+        contentValues.put(UserProfileTable.Columns.PHONE, mPhone);
+
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        SQLiteDatabase database = DataStash.INSTANCE.getDatabase();
+        database.update(UserProfileTable.NAME, contentValues,
+                UserProfileTable.Columns.USER_ID + " = ?",
+                new String[] {userId});
     }
 }
